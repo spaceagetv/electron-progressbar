@@ -263,13 +263,14 @@ class ProgressBar {
 		
 		this._window.on('closed', () => {
 			this._inProgress = false;
-			this._window = null;
 			
 			if (this._realValue < this._options.maxValue) {
 				this._fire('aborted', [this._realValue]);
 			}
 			
 			this._updateTaskbarProgress();
+			
+			this._window = null;
 		});
 		
 		this._window.loadURL('data:text/html;charset=UTF8,' + encodeURIComponent(htmlContent));
